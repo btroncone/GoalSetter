@@ -34,9 +34,6 @@
             }else {
                 return moment().add(vm.offset, 'days').format('MMM Do YY');
             }
-            //}else{
-            //    return moment().subtract(vm.offset,'days').format('MMM Do YY');
-            //}
         }
 
         function previousDay(){
