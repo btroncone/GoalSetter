@@ -1,5 +1,21 @@
-<ion-view title="Goals">
-  <ion-content class="padding">
-    <h1>{{vm.title}}</h1>
+<ion-view title="{{vm.date()}}">
+  <ion-nav-buttons side="right">
+    <i class="button icon-left ion-chevron-right button-clear button-dark" ng-click="vm.nextDay()"></i>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="left">
+    <i class="button icon-left ion-chevron-left button-clear button-dark" ng-click="vm.previousDay()"></i>
+  </ion-nav-buttons>
+  <ion-content>
+    <button class="button button-full button-dark" ui-sref="tab.goals.create">
+      Add New
+    </button>
+    <ul class="list">
+      <li class="item item-checkbox" ng-repeat="goal in vm.goals | filter: vm.date()">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="goal.complete">
+        </label>
+        {{goal.description}}
+      </li>
+    </ul>
   </ion-content>
 </ion-view>

@@ -1,5 +1,26 @@
 <ion-view title="Statistics">
-  <ion-content class="padding">
-    <h1>{{vm.title}}</h1>
+  <ion-content padding="true" class="has-header">
+    <div class="list">
+      <a class="item" href="#">
+        Total Goals
+        <span class="badge badge-assertive">{{vm.goals.length}}</span>
+      </a>
+      <a class="item" href="#">
+        Completed Today
+        <span class="badge badge-assertive">{{vm.completedToday}}</span>
+      </a>
+      <a class="item" href="#">
+        Remaining Today
+        <span class="badge badge-assertive">{{vm.todaysGoals - vm.completedToday}}</span>
+      </a>
+      <a class="item" href="#">
+        Completed All Time
+        <span class="badge badge-assertive">{{vm.completed}}</span>
+      </a>
+      <a class="item" href="#">
+        Percentage Complete
+        <span class="badge badge-assertive">{{(vm.completed / vm.goals.length) * 100}}%</span>
+      </a>
+    </div>
   </ion-content>
 </ion-view>

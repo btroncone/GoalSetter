@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('goalSetter', ['ionic'])
+angular.module('goalSetter', ['ionic', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -38,13 +38,23 @@ angular.module('goalSetter', ['ionic'])
       }
     })
     .state('tab.goals', {
+      abstract: true,
       url: '/goals',
       views: {
         'tab-goals': {
-          templateUrl: 'app/views/tab-goals.html',
-          controller: 'Goals as vm'
+          template: '<ion-nav-view></ion-nav-view>'
         }
       }
+    })
+    .state('tab.goals.index', {
+      url: '',
+      templateUrl: 'app/views/tab-goals.html',
+      controller: 'Goals as vm'
+    })
+    .state('tab.goals.create', {
+      url: '/create',
+      templateUrl: 'app/views/create-goal.html',
+      controller: 'GoalCreator as vm'
     })
     .state('tab.statistics', {
       url: '/statistics',
