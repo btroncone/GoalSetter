@@ -1,5 +1,4 @@
 (function(){
-
     angular
         .module('goalSetter')
         .controller('Statistics', Statistics);
@@ -25,5 +24,4 @@
             })
         }
     }
-
 })();

@@ -25,10 +25,7 @@
             if(fakeGoals){
                 deferred.resolve(fakeGoals)
             }else {
-                setTimeout(function () {
-                    deferred.resolve(fakeGoals);
-                    $ionicLoading.hide();
-                }, 500);
+                deferred.reject();
             }
             return deferred.promise;
         }
@@ -38,7 +35,6 @@
             setTimeout(function(){
                 goal.complete = false;
                 goal.date = moment(goal.date).format('MMM Do YY');
-                console.log(goal);
                 fakeGoals.push(goal);
                 deferred.resolve(goal);
             }, 100);
@@ -46,5 +42,4 @@
             return deferred.promise;
         }
     }
-
 })();

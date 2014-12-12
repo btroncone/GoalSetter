@@ -1,5 +1,4 @@
 (function(){
-
     angular
         .module('goalSetter')
         .controller('GoalCreator', GoalCreator);
