@@ -5,7 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('goalSetter', ['ionic', 'ngCordova'])
+angular
+    .module('goalSetter', ['ionic', 'ngCordova', 'azure-mobile-service.module'])
+    .constant('AzureMobileServiceClient',{ API_URL: "[API_URL]", API_KEY: '[API_KEY]'})
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
