@@ -354,7 +354,7 @@
                 /// given options.
                 /// </summary>
                 /// <param name="provider" type="String" mayBeNull="false">
-                /// Name of the authentication provider to use; one of 'facebook', 'twitter', 'google', 
+                /// Name of the authentication provider to use; one of 'facebook', 'twitter', 'google',
                 /// 'windowsazureactivedirectory' (can also use 'aad')
                 /// or 'microsoftaccount'.
                 /// </param>
@@ -362,9 +362,9 @@
                 /// Contains additional parameter information, valid values are:
                 ///    token: provider specific object with existing OAuth token to log in with
                 ///    useSingleSignOn: Only applies to Windows 8 clients.  Will be ignored on other platforms.
-                /// Indicates if single sign-on should be used. Single sign-on requires that the 
-                /// application's Package SID be registered with the Microsoft Azure Mobile Service, 
-                /// but it provides a better experience as HTTP cookies are supported so that users 
+                /// Indicates if single sign-on should be used. Single sign-on requires that the
+                /// application's Package SID be registered with the Microsoft Azure Mobile Service,
+                /// but it provides a better experience as HTTP cookies are supported so that users
                 /// do not have to login in everytime the application is launched.
                 ///    parameters: Any additional provider specific query string parameters.
                 /// </param>
@@ -377,14 +377,14 @@
         MobileServiceClient.prototype.login = Platform.async(
             function (provider, token, useSingleSignOn, callback) {
                 /// <summary>
-                /// Log a user into a Mobile Services application given a provider name and optional 
+                /// Log a user into a Mobile Services application given a provider name and optional
                 /// authentication token.
                 /// </summary>
                 /// <param name="provider" type="String" mayBeNull="true">
-                /// Name of the authentication provider to use; one of 'facebook', 'twitter', 'google', 
+                /// Name of the authentication provider to use; one of 'facebook', 'twitter', 'google',
                 /// 'windowsazureactivedirectory' (can also use 'aad')
                 /// or 'microsoftaccount'. If no provider is specified, the 'token' parameter
-                /// is considered a Microsoft Account authentication token. If a provider is specified, 
+                /// is considered a Microsoft Account authentication token. If a provider is specified,
                 /// the 'token' parameter is considered a provider-specific authentication token.
                 /// </param>
                 /// <param name="token" type="Object" mayBeNull="true">
@@ -392,9 +392,9 @@
                 /// </param>
                 /// <param name="useSingleSignOn" type="Boolean" mayBeNull="true">
                 /// Only applies to Windows 8 clients.  Will be ignored on other platforms.
-                /// Indicates if single sign-on should be used. Single sign-on requires that the 
-                /// application's Package SID be registered with the Microsoft Azure Mobile Service, 
-                /// but it provides a better experience as HTTP cookies are supported so that users 
+                /// Indicates if single sign-on should be used. Single sign-on requires that the
+                /// application's Package SID be registered with the Microsoft Azure Mobile Service,
+                /// but it provides a better experience as HTTP cookies are supported so that users
                 /// do not have to login in everytime the application is launched.
                 /// </param>
                 /// <param name="callback" type="Function" mayBeNull="true">
@@ -422,7 +422,7 @@
                 /// Contains additional parameter information, valid values are:
                 /// body: The body of the HTTP request.
                 /// method: The HTTP method to use in the request, with the default being POST,
-                /// parameters: Any additional query string parameters, 
+                /// parameters: Any additional query string parameters,
                 /// headers: HTTP request headers, specified as an object.
                 /// </param>
                 /// <param name="callback" type="Function" mayBeNull="true">
@@ -673,9 +673,9 @@
                     callback = parameters;
                     parameters = null;
                     if (!_.isNull(query) && _.isObject(query)) {
-                        // This 'query' argument could be either the query or the user-defined 
-                        // parameters object since both are optional.  A query is either (a) a simple string 
-                        // or (b) an Object with an toOData member. A user-defined parameters object is just 
+                        // This 'query' argument could be either the query or the user-defined
+                        // parameters object since both are optional.  A query is either (a) a simple string
+                        // or (b) an Object with an toOData member. A user-defined parameters object is just
                         // an Object.  We need to detect which of these has been passed in here.
                         if (!_.isString(query) && _.isNull(query.toOData)) {
                             parameters = query;
@@ -1199,7 +1199,7 @@
                     function (parameters, callback) {
                         /// <summary>
                         /// Execute the query.
-                        /// </summary>                
+                        /// </summary>
                         table._read(query, parameters, callback);
                     });
 
@@ -1393,7 +1393,7 @@
             /// given options.
             /// </summary>
             /// <param name="provider" type="String" mayBeNull="false">
-            /// Name of the authentication provider to use; one of 'facebook', 'twitter', 'google', 
+            /// Name of the authentication provider to use; one of 'facebook', 'twitter', 'google',
             /// 'windowsazureactivedirectory' (can also use 'aad')
             /// or 'microsoftaccount'.
             /// </param>
@@ -1401,9 +1401,9 @@
             /// Contains additional parameter information, valid values are:
             ///    token: provider specific object with existing OAuth token to log in with
             ///    useSingleSignOn: Only applies to Windows 8 clients.  Will be ignored on other platforms.
-            /// Indicates if single sign-on should be used. Single sign-on requires that the 
-            /// application's Package SID be registered with the Microsoft Azure Mobile Service, 
-            /// but it provides a better experience as HTTP cookies are supported so that users 
+            /// Indicates if single sign-on should be used. Single sign-on requires that the
+            /// application's Package SID be registered with the Microsoft Azure Mobile Service,
+            /// but it provides a better experience as HTTP cookies are supported so that users
             /// do not have to login in everytime the application is launched.
             ///    parameters: Any additional provider specific query string parameters.
             /// </param>
@@ -1449,9 +1449,9 @@
             /// </param>
             /// <param name="useSingleSignOn" type="Boolean" mayBeNull="true">
             /// Only applies to Windows 8 clients.  Will be ignored on other platforms.
-            /// Indicates if single sign-on should be used. Single sign-on requires that the 
-            /// application's Package SID be registered with the Microsoft Azure Mobile Service, 
-            /// but it provides a better experience as HTTP cookies are supported so that users 
+            /// Indicates if single sign-on should be used. Single sign-on requires that the
+            /// application's Package SID be registered with the Microsoft Azure Mobile Service,
+            /// but it provides a better experience as HTTP cookies are supported so that users
             /// do not have to login in everytime the application is launched.
             /// </param>
             /// <param name="callback" type="Function"  mayBeNull="true">
@@ -1558,7 +1558,7 @@
             /// login in everytime the application is launched. Is false be default.
             /// </param>
             /// <param name="parameters" type="Object">
-            /// Any additional provider specific query string parameters. 
+            /// Any additional provider specific query string parameters.
             /// </param>
             /// <param name="callback" type="Function">
             /// The callback to execute when the login completes: callback(error, user).
@@ -1673,7 +1673,7 @@
             /// The login instance that holds the context used with the login process.
             /// </param>
             /// <param name="provider" type="String">
-            /// Name of the authentication provider to use; one of 'facebook', 'twitter', 'google', or 
+            /// Name of the authentication provider to use; one of 'facebook', 'twitter', 'google', or
             /// 'microsoftaccount'. The provider should already have been validated.
             /// </param>
             /// <param name="token" type="Object">
@@ -1699,7 +1699,7 @@
                 url = _.url.combinePathAndQuery(url, queryString);
             }
 
-            // Invoke the POST endpoint to exchange provider-specific token for a 
+            // Invoke the POST endpoint to exchange provider-specific token for a
             // Microsoft Azure Mobile Services token
             client._request(
                 'POST',
@@ -2362,7 +2362,7 @@
                 get: function () {
                     /// <summary>
                     /// Gets the DeviceId of all registrations in the LocalStorageManager
-                    /// </summary>  
+                    /// </summary>
                     return _.isNull(this._pushHandle) ? '' : this._pushHandle;
                 },
                 set: function (value) {
@@ -2673,7 +2673,7 @@
             /// operation (i.e., keep using callbacks or switch to promises).
             /// </summary>
             /// <param name="func" type="Function">
-            /// An async function with a callback as its last parameter 
+            /// An async function with a callback as its last parameter
             /// </param>
             /// <returns type="Function">
             /// Function that when invoked will return a promise.
@@ -2846,7 +2846,7 @@
             var matchedDate = isoDateRegex.exec(text);
             if (matchedDate) {
                 // IE9 only handles precisely 0 or 3 decimal places when parsing ISO dates,
-                // and IE8 doesn't parse them at all. Fortunately, all browsers can handle 
+                // and IE8 doesn't parse them at all. Fortunately, all browsers can handle
                 // 'yyyy/mm/dd hh:MM:ss UTC' (without fractional seconds), so we can rewrite
                 // the date to that format, and the apply fractional seconds.
                 var dateWithoutFraction = matchedDate[1],

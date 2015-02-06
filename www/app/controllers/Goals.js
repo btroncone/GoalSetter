@@ -19,8 +19,8 @@
         activate();
 
         function activate(){
-            return GoalSetterFactory.getGoals().then(function(data){
-                vm.goals = data;
+            return GoalSetterFactory.getGoals().then(function(goals){
+                vm.goals = GoalSetterFactory.fixDates(goals);
             })
         }
 

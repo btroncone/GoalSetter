@@ -3,43 +3,48 @@
         .module('goalSetter')
         .factory('GoalSetterFactory', GoalSetterFactory);
 
-    GoalSetterFactory.$inject = ['$q','$ionicLoading'];
+    GoalSetterFactory.$inject = ['$ionicLoading', 'Azureservice'];
 
-    function GoalSetterFactory($q, $ionicLoading){
-        var fakeGoals = [
-            { description: 'Run 4 miles', date: moment().format('MMM Do YY'), complete: false },
-            { description: 'Learn Angular', date: moment().format('MMM Do YY'), complete: false },
-            { description: 'Build a mobile app', date: moment().format('MMM Do YY'), complete: false },
-            { description: 'Do 100 push-ups', date: moment().subtract(1, 'days').format('MMM Do YY'), complete: false },
-            { description: 'Ace the test', date: moment().subtract(1, 'days').format('MMM Do YY'), complete: false }
-        ];
+    function GoalSetterFactory($ionicLoading, Azureservice){
 
         var service = {
             getGoals: getGoals,
-            saveGoal: saveGoal
+            saveGoal: saveGoal,
+            completeGoal: completeGoal,
+            fixDates: fixDates
         };
         return service;
 
         function getGoals(){
-            var deferred = $q.defer();
-            if(fakeGoals){
-                deferred.resolve(fakeGoals)
-            }else {
-                deferred.reject();
-            }
-            return deferred.promise;
+            $ionicLoading.show({
+                template: 'Loading Goals...'
+            });
+            return Azureservice.query('Goal').then(function(goals){
+                $ionicLoading.hide();
+                return goals;
+            });
         }
 
         function saveGoal(goal){
-            var deferred = $q.defer();
-            setTimeout(function(){
-                goal.complete = false;
-                goal.date = moment(goal.date).format('MMM Do YY');
-                fakeGoals.push(goal);
-                deferred.resolve(goal);
-            }, 100);
+            $ionicLoading.show({
+                template: 'Saving Goal...'
+            });
+            return Azureservice.insert("Goal",{
+                Description: goal.description,
+                Date: moment(goal.date)
+            }).then(function(){
+                $ionicLoading.hide();
+            });
+        }
 
-            return deferred.promise;
+        function completeGoal(goal){
+
+        }
+
+        function fixDates(goals){
+            return _.each(goals, function(goal){
+                goal.date = moment(goal.date).format('MMM Do YY')
+            });
         }
     }
 })();
