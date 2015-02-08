@@ -3,9 +3,9 @@
         .module('goalSetter')
         .controller('Statistics', Statistics);
 
-    Statistics.$inject = ['GoalSetterFactory'];
+    Statistics.$inject = ['GoalSetterFactory', 'GoalSetterHelper'];
 
-    function Statistics(GoalSetterFactory){
+    function Statistics(GoalSetterFactory, GoalSetterHelper){
         var vm = this;
         vm.title = "Statistics";
         vm.goals = [];
@@ -17,7 +17,7 @@
 
         function activate(){
             return GoalSetterFactory.getGoals().then(function(goals){
-                vm.goals = GoalSetterFactory.fixDates(goals);
+                vm.goals = GoalSetterHelper.fixGoalDates(goals);
                 vm.completed = _.where(vm.goals, {'complete': true}).length;
                 vm.todaysGoals = _.where(vm.goals, {'date': moment().format('MMM Do YY')}).length;
                 vm.completedToday = _.where(vm.goals, {'complete': true, 'date': moment().format('MMM Do YY')}).length;

@@ -4,9 +4,9 @@
         .module('goalSetter')
         .controller('Goals', Goals);
 
-    Goals.$inject = ['GoalSetterFactory'];
+    Goals.$inject = ['GoalSetterFactory', 'GoalSetterHelper'];
 
-    function Goals(GoalSetterFactory){
+    function Goals(GoalSetterFactory, GoalSetterHelper){
         var vm = this;
         vm.title = "Goals";
         vm.goals = [];
@@ -20,12 +20,12 @@
 
         function activate(){
             return GoalSetterFactory.getGoals().then(function(goals){
-                vm.goals = GoalSetterFactory.fixDates(goals);
+                vm.goals = GoalSetterHelper.fixGoalDates(goals);
             })
         }
 
         function toggleGoal(goal){
-            goal.complete = !goal.complete;
+            GoalSetterFactory.completeGoal(goal);
         }
 
         function date(){

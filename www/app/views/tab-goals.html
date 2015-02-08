@@ -12,7 +12,7 @@
     <ul class="list">
       <li class="item item-checkbox" ng-repeat="goal in vm.goals | filter: vm.date()">
         <label class="checkbox">
-          <input type="checkbox" ng-model="goal.complete">
+          <input type="checkbox" ng-model="goal.complete" ng-click="vm.toggleGoal(goal)">
         </label>
         {{goal.description}}
       </li>

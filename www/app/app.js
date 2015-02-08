@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular
     .module('goalSetter', ['ionic', 'ngCordova', 'azure-mobile-service.module'])
-    .constant('AzureMobileServiceClient',{ API_URL: "", API_KEY: ''})
+    .constant('AzureMobileServiceClient',{ API_URL: "[APIURL]", API_KEY: '[APIKEY]'})
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

@@ -6,12 +6,12 @@
     GoalSetterFactory.$inject = ['$ionicLoading', 'Azureservice'];
 
     function GoalSetterFactory($ionicLoading, Azureservice){
-
+        var goals = [];
         var service = {
+            goals: goals,
             getGoals: getGoals,
             saveGoal: saveGoal,
-            completeGoal: completeGoal,
-            fixDates: fixDates
+            completeGoal: completeGoal
         };
         return service;
 
@@ -22,7 +22,7 @@
             return Azureservice.query('Goal').then(function(goals){
                 $ionicLoading.hide();
                 return goals;
-            });
+            }, onError);
         }
 
         function saveGoal(goal){
@@ -34,17 +34,23 @@
                 Date: moment(goal.date)
             }).then(function(){
                 $ionicLoading.hide();
-            });
+            }, onError);
         }
 
         function completeGoal(goal){
-
+            return Azureservice.update("Goal",{
+                id: goal.id,
+                complete:!goal.complete
+            }).then(function(data){
+                console.log(data);
+            }, onError);
         }
 
-        function fixDates(goals){
-            return _.each(goals, function(goal){
-                goal.date = moment(goal.date).format('MMM Do YY')
-            });
+        function onError(error){
+            //in general, display user friendly error message
+            console.log(error);
+            $ionicLoading.hide();
         }
+
     }
 })();
