@@ -9,13 +9,13 @@
     <button class="button button-full button-dark" ui-sref="tab.goals.create">
       Add New
     </button>
-    <ul class="list">
-      <li class="item item-checkbox" ng-repeat="goal in vm.goals | filter: vm.date()">
+    <ion-list>
+      <ion-item class="item item-checkbox" ng-repeat="goal in vm.goals | filter: vm.date()">
         <label class="checkbox">
           <input type="checkbox" ng-model="goal.complete" ng-click="vm.toggleGoal(goal)">
         </label>
         {{goal.description}}
-      </li>
-    </ul>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
