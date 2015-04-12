@@ -12,7 +12,7 @@
 
         function saveGoal(){
             GoalSetterFactory.saveGoal(vm.goal).then(function(){
-                $state.go("tab.goals.index");
+                $state.go("tab.goals");
             })
         }
     }

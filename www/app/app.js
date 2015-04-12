@@ -40,23 +40,22 @@ angular
       }
     })
     .state('tab.goals', {
-      abstract: true,
       url: '/goals',
       views: {
         'tab-goals': {
-          template: '<ion-nav-view></ion-nav-view>'
+          templateUrl: 'app/views/tab-goals.html',
+          controller: 'Goals as vm'
         }
       }
     })
-    .state('tab.goals.index', {
-      url: '',
-      templateUrl: 'app/views/tab-goals.html',
-      controller: 'Goals as vm'
-    })
-    .state('tab.goals.create', {
-      url: '/create',
-      templateUrl: 'app/views/create-goal.html',
-      controller: 'GoalCreator as vm'
+    .state('tab.create-goals', {
+      url: '/goals/create',
+        views: {
+          'tab-goals': {
+            templateUrl: 'app/views/create-goal.html',
+            controller: 'GoalCreator as vm'
+          }
+        }
     })
     .state('tab.statistics', {
       url: '/statistics',
